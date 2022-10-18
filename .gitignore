@@ -1,0 +1,11 @@
+
+*.xlsx
+*.jpg
+Stim_MultipleRules/Rules_train/.DS_Store
+Stim_MultipleRules/Rules_train/stim_rule1/.DS_Store
+Stim_MultipleRules/Rules_eval/stim_rule200/.DS_Store
+Stim_MultipleRules/Rules_eval/stim_rule196/.DS_Store
+Stim_MultipleRules/Rules_eval/.DS_Store
+*.json
+Stim_MultipleRules/.DS_Store
+.DS_Store

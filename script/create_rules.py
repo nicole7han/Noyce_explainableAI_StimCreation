@@ -88,7 +88,7 @@ parameters = {
 
 
 ''' STEP 1: Choose primary object, all 3 features matter'''
-N = 2 #200 #number of different rules
+N = 200 #number of different rules
 rule = pd.DataFrame()
 for i in range(N):
     row_info = {}

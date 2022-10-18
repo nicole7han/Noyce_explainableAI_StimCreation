@@ -19,13 +19,13 @@ max_iter = 10 # maximum iteration to find valid feature values
 n_rules = len(rules)
 for i, param in rules.iterrows():
     print('creating rule {}'.format(i+1))
-    if i < n_rules-1:  # only leave one rule for evaluation, you can change the numbers here
-        n_stim = 20#2500
+    n_stim = 20  # 2500
+    if i < n_rules-5:  # leave number of rules for evaluation
         n_train = int(n_stim * .8) # 80% training, 20% testing
         outpath = 'Stim_MultipleRules/Rules_train/stim_rule{}'.format(i+1)
     else:
-        n_stim = 0
-        n_test = 2500 # all for testing, no training
+        n_test = n_stim # all for testing, no training
+        n_train = 0
         outpath = 'Stim_MultipleRules/Rules_eval/stim_rule{}'.format(i+1)
     os.makedirs(outpath, exist_ok=True)
     os.makedirs('{}/train'.format(outpath), exist_ok=True)
