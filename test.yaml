@@ -1,0 +1,5 @@
+img: test.img.tsv
+hw: test.hw.tsv
+label: test.label.tsv
+feature: test.feature.tsv
+caption: test_caption.json

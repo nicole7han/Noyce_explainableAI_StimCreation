@@ -6,11 +6,11 @@ rules = pd.read_excel('Stim_MultipleRules/rule_parameters.xlsx')
 tokenizer = AutoTokenizer.from_pretrained("Vamsi/T5_Paraphrase_Paws")
 model = AutoModelForSeq2SeqLM.from_pretrained("Vamsi/T5_Paraphrase_Paws")
 n_rules = len(rules)
-
+n_eval_rules = 5
 for i, param in rules.iterrows():
 
     rule = rules[rules['rule']=='rule{}'.format(i+1)]
-    if i!=n_rules-1:
+    if i<n_rules-n_eval_rules:
         outpath = 'Stim_MultipleRules/Rules_train/stim_rule{}'.format(i+1)
     else:
         outpath = 'Stim_MultipleRules/Rules_eval/stim_rule{}'.format(i+1)

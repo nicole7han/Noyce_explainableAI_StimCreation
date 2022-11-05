@@ -17,19 +17,21 @@ sigma = 0.5 # white noise
 imageSize = 255*3
 max_iter = 10 # maximum iteration to find valid feature values
 n_rules = len(rules)
+n_eval_rules = 5
 for i, param in rules.iterrows():
     print('creating rule {}'.format(i+1))
     n_stim = 20  # 2500
-    if i < n_rules-5:  # leave number of rules for evaluation
+    if i < n_rules-n_eval_rules:  # leave number of rules for evaluation
         n_train = int(n_stim * .8) # 80% training, 20% testing
         outpath = 'Stim_MultipleRules/Rules_train/stim_rule{}'.format(i+1)
+        os.makedirs('{}/train'.format(outpath), exist_ok=True)
+        os.makedirs('{}/test'.format(outpath), exist_ok=True)
     else:
         n_test = n_stim # all for testing, no training
         n_train = 0
         outpath = 'Stim_MultipleRules/Rules_eval/stim_rule{}'.format(i+1)
+        os.makedirs('{}/test'.format(outpath), exist_ok=True)
     os.makedirs(outpath, exist_ok=True)
-    os.makedirs('{}/train'.format(outpath), exist_ok=True)
-    os.makedirs('{}/test'.format(outpath), exist_ok=True)
     stim_info = pd.DataFrame()
     for j in range(n_stim):
         A_info = {}
