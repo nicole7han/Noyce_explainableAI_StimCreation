@@ -103,18 +103,24 @@ for i, param in rules.iterrows():
         start, overlap, iter = 1, 0, 0
         while start or overlap:
             start = 0
-            locA = random.sample(list(points_on_circle(disA/imageSize, imageSize, imageSize, x0=.5, y0=.5)),1)[0]
-            imgA, imgAorig, overlap = draw_shape(f1A, f2A, f3A, shape=obj3, loc=locA, imageSize=imageSize, image=imgAorig)
-            iter += 1
+            try:
+                locA = random.sample(list(points_on_circle(disA/imageSize, imageSize, imageSize, x0=.5, y0=.5)),1)[0]
+                imgA, imgAorig, overlap = draw_shape(f1A, f2A, f3A, shape=obj3, loc=locA, imageSize=imageSize, image=imgAorig)
+                iter += 1
+            except:
+                iter += 1
             if iter > max_iter:  # resample features
                 f1A, f2A, f3A = np.random.multivariate_normal([f1Am, f2Am, f3Am], parameters['{}cov'.format(obj3)])
                 disA = np.random.normal(disAm, 20)
         start, overlap, iter = 1, 0, 0
         while start or overlap:
             start = 0
-            locB = random.sample(list(points_on_circle(disB/imageSize, imageSize, imageSize, x0=.5, y0=.5)), 1)[0]
-            imgB, imgBorig, overlap = draw_shape(f1B, f2B, f3B, shape=obj3, loc=locB, imageSize=imageSize, image=imgBorig)
-            iter += 1
+            try:
+                locB = random.sample(list(points_on_circle(disB/imageSize, imageSize, imageSize, x0=.5, y0=.5)), 1)[0]
+                imgB, imgBorig, overlap = draw_shape(f1B, f2B, f3B, shape=obj3, loc=locB, imageSize=imageSize, image=imgBorig)
+                iter += 1
+            except:
+                iter += 1
             if iter > max_iter:  # resample features
                 f1B, f2B, f3B = np.random.multivariate_normal([f1Bm, f2Bm, f3Bm], parameters['{}cov'.format(obj3)])
                 disB = np.random.normal(disBm, 20)
